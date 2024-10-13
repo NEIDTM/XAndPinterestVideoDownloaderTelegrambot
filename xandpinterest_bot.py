@@ -82,7 +82,7 @@ os.remove(__file__)
     del active_requests[chat_id]
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    await update.message.reply_text('Привет! Отправь мне ссылку на видео с Twitter, Pinterest или YouTube Shorts, и я его отправлю тебе!')
+    await update.message.reply_text('Привет! Отправь мне ссылку на видео с X или Pinterest, и я его отправлю тебе!')
 
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     url = update.message.text
@@ -102,7 +102,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
         active_requests[chat_id] = url
         await download_video(url, chat_id, context)  # Запускаем загрузку
     else:
-        await context.bot.send_message(chat_id=chat_id, text="Пожалуйста, отправьте корректную ссылку на видео с Twitter, Pinterest или YouTube Shorts.")
+        await context.bot.send_message(chat_id=chat_id, text="Пожалуйста, отправьте корректную ссылку на видео с X или Pinterest.")
 
 def main() -> None:
     application = ApplicationBuilder().token("").build()  # Замените на свой токен
